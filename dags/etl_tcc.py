@@ -72,7 +72,7 @@ def salva_contagem_generos_por_pais_GBQ():
     credentials = service_account.Credentials.from_service_account_file(key_path, scopes=["https://www.googleapis.com/auth/cloud-platform"])
     data.to_gbq(destination_table='base_tcc.Agrp_Nacionalidade_Airline', if_exists='replace', credentials=credentials)
 
-with DAG('dag_etl', start_date=datetime(2023, 9, 22),
+with DAG('dag_etl', start_date=datetime(2023, 11, 1),
          schedule_interval='30 * * * *', catchup=False) as dag:
     
     salva_carga_Full_GBQ_task = PythonOperator(
